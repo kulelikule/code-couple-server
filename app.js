@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/blog', blog);
+app.use('/ajax/blog', blog);
 app.use('/ajax/blogAdmin', blogAdmin);
 
 // catch 404 and forward to error handler

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'),
     DB_URL = 'mongodb://localhost:27017/codeCouple';
-
+mongoose.Promise = global.Promise;
 /**
  * 连接
  */
