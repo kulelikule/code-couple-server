@@ -12,17 +12,17 @@ router.post('/save', function(req, res, next) {
         keywords: param.keywords
     });
 
-    article.save(function (err, res) {
-        if (err) {
-            console.log("Error:" + err);
-        }
-        else {
-            console.log("Res:" + res);
-        }
-    });
-    res.send({
-        success: true,
-        message: '文章保存成功！'
+    article.save().then(function (result) {
+        res.send({
+            success: true,
+            message: '文章保存成功！'
+        });
+    }).catch(function(e){
+        console.log(e);
+        res.send({
+            success: true,
+            message: '文章保存成功！'
+        });
     });
 });
 
