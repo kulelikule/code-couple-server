@@ -33,14 +33,14 @@ router.get('/getArticleDetails', function (req, res) {
             success: true,
             message: '获取文章详情页内容成功',
             result: result
-        }).catch(function(e){
-            console.log(e);
-            res.send({
-                success: false,
-                message: '获取文章详情页内容失败',
-                result: {}
-            });
         })
+    }).catch(function(e){
+        console.log(e);
+        res.send({
+            success: false,
+            message: '获取文章详情页内容失败',
+            result: {}
+        });
     })
 })
 

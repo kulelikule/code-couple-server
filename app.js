@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-var users = require('./routes/users');
+var login = require('./routes/login');
 var blog = require('./routes/blog');
 var blogAdmin = require('./routes/admin/blog');
 
@@ -23,8 +23,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
-    //cookie: {maxAge: 24 * 60 * 60 * 1000 },
-    cookie: {maxAge: 120 * 1000 },
+    //一天内免登陆
+    cookie: {maxAge: 24 * 60 * 60 * 1000 },
     secret: 'code-couple',
     resave: true,
     saveUninitialized:true
@@ -41,9 +41,8 @@ app.use('/ajax/admin', function(req, res, next){
     }else{
         next();
     }
-
 });
-app.use('/ajax/users', users);
+app.use('/ajax/login', login);
 app.use('/ajax/blog', blog);
 app.use('/ajax/admin/blog', blogAdmin);
 
